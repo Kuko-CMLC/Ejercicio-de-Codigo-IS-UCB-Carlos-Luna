@@ -1,4 +1,4 @@
-export interface itunesModel{
+export class itunesModel{
   wrapperType:string;
   kind:string;
   artistId:string;
