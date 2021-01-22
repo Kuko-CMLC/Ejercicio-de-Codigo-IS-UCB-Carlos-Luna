@@ -13,14 +13,18 @@ const httpOptions = {
   providedIn: "root",
 })
 export class ItunesService {
-  ituneContentSearchUrl: string =
-    "https://itunes.apple.com/";
-  searchParameter: string = 
-    "search?term="
+  ituneContentSearchUrl: string = "https://itunes.apple.com/";
+  searchParameter: string = "search?term=";
+  entity: string = "album";
   constructor(private http: HttpClient) {}
 
-  getAllContentForArtist(artistName:string): Observable<itunesResponseModel> {
-    console.log(`${this.ituneContentSearchUrl}/${this.searchParameter}${artistName}`)
-    return this.http.post<itunesResponseModel>(`${this.ituneContentSearchUrl}/${this.searchParameter}${artistName}`,httpOptions);
+  getAllContentForArtist(artistName: string): Observable<itunesResponseModel> {
+    console.log(
+      `${this.ituneContentSearchUrl}/${this.searchParameter}${artistName}`
+    );
+    return this.http.post<itunesResponseModel>(
+      `${this.ituneContentSearchUrl}/${this.searchParameter}${artistName}&entity=${this.entity}`,
+      httpOptions
+    );
   }
 }

@@ -2,11 +2,11 @@ import { albumCollectionModel } from "./albumCollectionModel";
 import { itunesModel } from "./itunesModel";
 
 export class itunesResponseModel {
-  resultCount:string;
+  resultCount:number;
   results:itunesModel[];
 }
 
 export class collectionResponseModel {
-  resultCount:string;
+  resultCount:number;
   results:albumCollectionModel[];
 }
