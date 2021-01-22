@@ -1,0 +1,9 @@
+.message-not-found{
+  text-align: center;
+}
+
+.message-container {
+  font-size: 0.95rem;
+  color: rgb(53, 53, 53);
+  font-style: italic;
+}

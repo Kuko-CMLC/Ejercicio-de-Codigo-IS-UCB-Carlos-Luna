@@ -1,7 +1,15 @@
-
 <body>
   <div class="contianer">
-    <div class="row justify-content-center">
+    <app-filter-field
+     (searchArtistAlbum)="searchArtistAlbum($event)"
+     (sortListBy)="sortListBy($event)">
+    </app-filter-field>
+
+    <div *ngIf="notFound == true">
+      <app-not-found-artist></app-not-found-artist>
+    </div>
+
+    <div *ngIf="notFound == false" class="row justify-content-center">
       <app-album-collection-item
         *ngFor="let album of albumCollection"
         [album]="album"

@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { albumCollectionModel } from "src/app/models/albumCollectionModel";
 import { itunesModel } from "src/app/models/itunesModel";
 import { collectionResponseModel } from "src/app/models/itunesResponseModel";
-import { CollectionService } from "src/app/services/collection.service";
 import { ItunesService } from "src/app/services/itunes.service";
 
 @Component({
@@ -13,18 +11,36 @@ import { ItunesService } from "src/app/services/itunes.service";
 export class AlbumCollectionComponent implements OnInit {
   itunesResponse: collectionResponseModel;
   albumCollection: itunesModel[];
-  constructor(
-    private collectionService: CollectionService,
-    private itunesService: ItunesService
-  ) {}
+  notFound: boolean = false;
+  constructor(private itunesService: ItunesService) {}
 
   ngOnInit() {
-    this.getAllData();
+    this.getAllAlbumsCollection("Lauv");
   }
 
-  getAllData() {
-    this.itunesService.getAllContentForArtist().subscribe((itunesResponse) => {
-      this.albumCollection = itunesResponse.results;
-    });
+  getAllAlbumsCollection(artistName: string) {
+    this.itunesService.getAllContentForArtist(artistName)
+      .subscribe((itunesResponse) => {
+        this.validateEmptyNotEmptyAlbum(itunesResponse.resultCount)
+        this.albumCollection = itunesResponse.results;
+      });
+  }
+
+  validateEmptyNotEmptyAlbum(resultCount: number) {
+    if (resultCount == 0) 
+      this.notFound = true;
+    else 
+      this.notFound = false;
+  }
+
+  searchArtistAlbum(word: string) {
+    this.getAllAlbumsCollection(word);
+  }
+
+  sortListBy(order:string){
+    if (order=='A-Z')
+      this.albumCollection = this.albumCollection.sort((a,b) => a.collectionName.localeCompare(b.collectionName));
+    else
+      this.albumCollection = this.albumCollection.sort((b,a) => a.collectionName.localeCompare(b.collectionName));
   }
 }
