@@ -1,4 +1,4 @@
-export interface StrategicAllyForm{
+export interface itunesModel{
   wrapperType:string;
   kind:string;
   artistId:string;
