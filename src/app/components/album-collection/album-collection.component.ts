@@ -36,4 +36,11 @@ export class AlbumCollectionComponent implements OnInit {
   searchArtistAlbum(word: string) {
     this.getAllAlbumsCollection(word);
   }
+
+  sortListBy(order:string){
+    if (order=='A-Z')
+      this.albumCollection = this.albumCollection.sort((a,b) => a.collectionName.localeCompare(b.collectionName));
+    else
+      this.albumCollection = this.albumCollection.sort((b,a) => a.collectionName.localeCompare(b.collectionName));
+  }
 }
