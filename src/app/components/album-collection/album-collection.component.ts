@@ -19,16 +19,16 @@ export class AlbumCollectionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getAllData();
+    this.getAllAlbumsCollection("Lauv");
   }
 
-  getAllData() {
-    this.itunesService.getAllContentForArtist().subscribe((itunesResponse) => {
+  getAllAlbumsCollection(artistName:string) {
+    this.itunesService.getAllContentForArtist(artistName).subscribe((itunesResponse) => {
       this.albumCollection = itunesResponse.results;
     });
   }
 
   searchArtistAlbum(word:string){
-    console.log(word)
+    this.getAllAlbumsCollection(word);
   }
 }
