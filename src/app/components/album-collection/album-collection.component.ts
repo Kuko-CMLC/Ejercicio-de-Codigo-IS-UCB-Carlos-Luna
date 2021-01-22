@@ -27,4 +27,8 @@ export class AlbumCollectionComponent implements OnInit {
       this.albumCollection = itunesResponse.results;
     });
   }
+
+  searchArtistAlbum(word:string){
+    console.log(word)
+  }
 }

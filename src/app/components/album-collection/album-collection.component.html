@@ -1,6 +1,10 @@
 
 <body>
   <div class="contianer">
+    <app-filter-field
+      (searchArtistAlbum)="searchArtistAlbum($event)"
+    >
+    </app-filter-field>
     <div class="row justify-content-center">
       <app-album-collection-item
         *ngFor="let album of albumCollection"
