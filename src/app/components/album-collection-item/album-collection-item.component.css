@@ -1,0 +1,41 @@
+.container-items {
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.title {
+  font-size: 32px;
+  font-weight: 100;
+  margin-bottom: 50px;
+}
+.profile-collection-item {
+  height: 150px;
+}
+img {
+  margin: 10px auto 10px auto;
+  object-fit: cover;
+  height: 100%;
+  width: 150px;
+  border: 50%;
+  display: block;
+}
+.card {
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+}
+.card-body {
+  position: relative;
+  bottom: 10px;
+  margin: auto;
+}
+.header {
+  padding-top: 40px;
+}
+
+.mt-4 {
+  color: #0058dc;
+  font-style: bold;
+}
