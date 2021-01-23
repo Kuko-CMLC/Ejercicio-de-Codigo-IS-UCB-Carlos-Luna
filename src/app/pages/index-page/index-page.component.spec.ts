@@ -8,7 +8,7 @@ import { IndexPageComponent } from "./index-page.component";
 import { FormsModule } from "@angular/forms";
 import { AlbumCollectionItemComponent } from "src/app/components/album-collection-item/album-collection-item.component";
 import { ItunesService } from "src/app/services/itunes.service";
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe("IndexPageComponent", () => {
   let component: IndexPageComponent;
@@ -16,14 +16,8 @@ describe("IndexPageComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        NgxPaginationModule,
-        FormsModule,
-        HttpClientTestingModule
-      ],
-      providers: [
-        ItunesService
-      ],
+      imports: [NgxPaginationModule, FormsModule, HttpClientTestingModule],
+      providers: [ItunesService],
       declarations: [
         IndexPageComponent,
         AlbumCollectionComponent,

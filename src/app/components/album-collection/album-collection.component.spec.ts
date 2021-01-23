@@ -141,13 +141,13 @@ describe("AlbumCollectionComponent", () => {
       collectionName: "Z-Name",
       collectionPrice: "12.0",
     };
-    mockListCollection.push(mockAlbum1,mockAlbum2,mockAlbum3);
+    mockListCollection.push(mockAlbum1, mockAlbum2, mockAlbum3);
     component.albumCollection = mockListCollection;
-    component.onSortList('Z-A');
+    component.onSortList("Z-A");
     const result = component.albumCollection[0];
-    expect(result).toEqual(mockAlbum3)
+    expect(result).toEqual(mockAlbum3);
   });
-  
+
   it("should sort from Higher to Lower (A-Z)", () => {
     let mockListCollection: albumCollectionModel[] = [];
     const mockAlbum1: albumCollectionModel = {
@@ -171,10 +171,10 @@ describe("AlbumCollectionComponent", () => {
       collectionName: "~how i'm feeling~",
       collectionPrice: "12.0",
     };
-    mockListCollection.push(mockAlbum1,mockAlbum2,mockAlbum3);
+    mockListCollection.push(mockAlbum1, mockAlbum2, mockAlbum3);
     component.albumCollection = mockListCollection;
-    component.onSortList('A-Z');
+    component.onSortList("A-Z");
     const result = component.albumCollection[0];
-    expect(result).toEqual(mockAlbum2)
+    expect(result).toEqual(mockAlbum2);
   });
 });

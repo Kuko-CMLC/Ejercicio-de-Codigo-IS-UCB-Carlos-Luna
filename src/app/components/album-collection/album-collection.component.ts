@@ -9,14 +9,14 @@ import { ItunesService } from "src/app/services/itunes.service";
   styleUrls: ["./album-collection.component.css"],
 })
 export class AlbumCollectionComponent implements OnInit {
+  DEFAULT_ITEMS_PER_PAGE: number = 8;
+  
   itunesResponse: itunesResponseModel;
   albumCollection: albumCollectionModel[];
   displayMessageNotFound: boolean = false;
   displaySortButtons:boolean = false;
   displayWelcomeMessage:boolean = true;
 
-  //Pagination Variables
-  DEFAULT_ITEMS_PER_PAGE: number = 8;
   totalItems: number;
   totalItemsPerPage: number = 8;
   displayButtonShowAll: boolean = true;
@@ -67,16 +67,15 @@ export class AlbumCollectionComponent implements OnInit {
 
   onSortList(order: string) {
     if (order == "A-Z")
-      this.albumCollection = this.albumCollection.sort((a, b) =>
-        a.collectionName.localeCompare(b.collectionName)
+      this.albumCollection = this.albumCollection.sort((albumA, albumB) =>
+        albumA.collectionName.localeCompare(albumB.collectionName)
       );
     else
-      this.albumCollection = this.albumCollection.sort((b, a) =>
-        a.collectionName.localeCompare(b.collectionName)
+      this.albumCollection = this.albumCollection.sort((albumB, albumA) =>
+        albumA.collectionName.localeCompare(albumB.collectionName)
       );
   }
 
-  //Validators
   validateSameArtist(artistAlbumFromCollection: string, artistAlbum: string) {
     if (artistAlbumFromCollection.toLowerCase() === artistAlbum.toLowerCase()) {
       return true;
@@ -106,7 +105,6 @@ export class AlbumCollectionComponent implements OnInit {
     }
   }
 
-  //set states
   setStatesForWelcomePage(){
     this.displayWelcomeMessage=true;
     this.displayMessageNotFound=false;

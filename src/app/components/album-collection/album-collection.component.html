@@ -4,17 +4,14 @@
      (searchArtistAlbum)="searchArtistAlbum($event)" >
     </app-filter-field>
      
-    <!-- Welcome Message-->
     <div *ngIf="displayWelcomeMessage == true">
       <app-welcome-message></app-welcome-message>
     </div>
 
-    <!-- Message not found-->
     <div *ngIf="displayMessageNotFound == true">
       <app-not-found-artist></app-not-found-artist>
     </div>
 
-    <!-- Sort Buttons -->
     <div *ngIf="displaySortButtons === true" class="row justify-content-left container-sort-buttons">
       <div class="col-sm-2 col-md-1 col-1 col-xl-1 col-5">
         <label for="onSortList" class="col-form-label sort-title">
