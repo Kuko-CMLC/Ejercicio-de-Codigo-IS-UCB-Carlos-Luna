@@ -33,9 +33,10 @@
   margin-top: 2px;
   font-style: italic;
   color: white;
+  font-weight: 600 !important;
 }
 .custom-pagination ::ng-deep .ngx-pagination .current {
-  background: #e03f4c;
+  background: #e12c06;
 }
 .container-icon-loading{
   margin: auto;
