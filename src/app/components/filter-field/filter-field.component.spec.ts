@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { FilterFieldComponent } from './filter-field.component';
 
@@ -8,6 +10,10 @@ describe('FilterFieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        HttpClientTestingModule
+      ],
       declarations: [ FilterFieldComponent ]
     })
     .compileComponents();

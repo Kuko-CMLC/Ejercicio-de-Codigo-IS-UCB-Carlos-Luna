@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgxPaginationModule } from "ngx-pagination";
 import { AlbumCollectionComponent } from './album-collection.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AlbumCollectionComponent', () => {
   let component: AlbumCollectionComponent;
@@ -8,7 +11,13 @@ describe('AlbumCollectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlbumCollectionComponent ]
+      imports: [
+        NgxPaginationModule,
+        FormsModule,
+        HttpClientTestingModule
+      ],
+      declarations: [ AlbumCollectionComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
