@@ -26,7 +26,7 @@ describe("WelcomeMessageComponent", () => {
     const fixture = TestBed.createComponent(WelcomeMessageComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector("h1").textContent).toContain("Welcome.");
+    expect(compiled.querySelector("h1").textContent).toContain("Welcome");
   });
 
   it("should render content a in h6 tag ", () => {

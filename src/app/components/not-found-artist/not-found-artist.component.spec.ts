@@ -27,7 +27,7 @@ describe("NotFoundArtistComponent", () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector("h2").textContent).toContain(
-      "Artist not found, please try another name"
+      "Artist not found, please try with another name"
     );
   });
 
@@ -45,7 +45,7 @@ describe("NotFoundArtistComponent", () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector("p").textContent).toContain(
-      "Be careful about spelling and tildes."
+      "Be careful about spelling, tildes and spaces."
     );
   });
 });

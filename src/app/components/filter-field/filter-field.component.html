@@ -1,5 +1,5 @@
-<div class="row mb-3">
-  <div class="col-lg-8 mx-left">
+<div class="row mb-3 container">
+  <div class="col-lg-8 col-12 mx-left">
     <h5 class="font-weight-light mb-3 font-italic text-white"></h5>
     <form action="" (ngSubmit)="onSearchAlbumArtist()">
       <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
@@ -9,13 +9,13 @@
             placeholder="What are you searching for?"
             [(ngModel)]="artistNameInput"
             name="artistName"
-            aria-describedby="button-addon1"
+            aria-describedby="button-search"
             class="form-control border-0 bg-light border"
             required
           />
           <div class="input-group-append">
             <button
-              id="button-addon1"
+              id="button-search"
               type="submit"
               class="btn btn-link text-primary"
               (click)="onSearchAlbumArtist()"
