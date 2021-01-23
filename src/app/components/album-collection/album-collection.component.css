@@ -4,3 +4,34 @@
   max-width: 1600px;
   padding: 1% 5% 5% 5%;
 }
+
+.pagination-container{
+  margin-top: 2px;
+}
+
+.btn{
+  height: 35px;
+}
+
+.container-sort-buttons{
+  max-width: 1200px;
+  padding-top: 0px;
+  padding-left: 5%;
+  padding-bottom: 10px;
+  padding-right: 0px;
+}
+
+.sort-btn,.pagination-btn{
+  border: none; 
+  background: #0058de;
+  margin: 5px;
+}
+.sort-btn:hover,.pagination-btn:hover{
+  border: none; 
+  background: #0045ac;
+}
+
+.sort-title{
+  text-align: left;
+  margin: auto;
+}

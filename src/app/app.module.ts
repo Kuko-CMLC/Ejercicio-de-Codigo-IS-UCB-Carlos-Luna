@@ -9,6 +9,8 @@ import { AlbumCollectionComponent } from './components/album-collection/album-co
 import { FilterFieldComponent } from './components/filter-field/filter-field.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundArtistComponent } from './components/not-found-artist/not-found-artist.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { WelcomeMessageComponent } from './components/welcome-message/welcome-message.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { NotFoundArtistComponent } from './components/not-found-artist/not-found
     AlbumCollectionComponent,
     FilterFieldComponent,
     NotFoundArtistComponent,
+    WelcomeMessageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
