@@ -1,4 +1,4 @@
-export class albumCollectionModel {
+export class albumCollectionModel{
   collectionName:string;
   artistName:string;
   collectionPrice:string;

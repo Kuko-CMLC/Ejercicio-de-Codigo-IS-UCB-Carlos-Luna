@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { itunesModel } from "src/app/models/itunesModel";
-import { collectionResponseModel } from "src/app/models/itunesResponseModel";
+import { albumCollectionModel } from "src/app/models/albumCollectionModel";
+import { itunesResponseModel } from "src/app/models/itunesResponseModel";
 import { ItunesService } from "src/app/services/itunes.service";
 
 @Component({
@@ -9,8 +9,8 @@ import { ItunesService } from "src/app/services/itunes.service";
   styleUrls: ["./album-collection.component.css"],
 })
 export class AlbumCollectionComponent implements OnInit {
-  itunesResponse: collectionResponseModel;
-  albumCollection: itunesModel[];
+  itunesResponse: itunesResponseModel;
+  albumCollection: albumCollectionModel[];
   displayMessageNotFound: boolean = false;
   displaySortButtons:boolean = false;
   displayWelcomeMessage:boolean = true;
@@ -27,20 +27,19 @@ export class AlbumCollectionComponent implements OnInit {
   ngOnInit() {
   }
 
-  getAllAlbumsCollection(artistName: string) {
+  getAllMediaFromArtist(artistName: string) {
     this.itunesService
       .getAllContentForArtist(artistName)
       .subscribe((itunesResponse) => {
-        this.displaySortButtons=true;
-        this.getOnlyAlbumCollectionOfAnArtist(artistName,itunesResponse.results);
+        this.totalItems = this.getOnlyAlbumCollectionOfAnArtist(artistName,itunesResponse.results);
+        this.enoughElementsToPaginate = this.validateEnoughElementsToPaginate(this.totalItems);
         this.validateNotEmptyAlbum();
-        this.validateEnoughElementsToPaginate();
-      });
+    });
   }
 
-  getOnlyAlbumCollectionOfAnArtist(artistName: string, albumCollection: itunesModel[]) {
+  getOnlyAlbumCollectionOfAnArtist(artistName: string, albumCollection: albumCollectionModel[]) {
     this.albumCollection = albumCollection.filter((album) => this.validateSameArtist(album.artistName, artistName));
-    this.totalItems = this.albumCollection.length;
+    return this.albumCollection.length;
   }
 
   searchArtistAlbum(artistName: string) {
@@ -48,9 +47,10 @@ export class AlbumCollectionComponent implements OnInit {
       this.setStatesForWelcomePage();
     }
     else{
-      this.displayWelcomeMessage=false;
+      this.displaySortButtons = true;
+      this.displayWelcomeMessage = false;
       this.resetPagination();
-      this.getAllAlbumsCollection(artistName);
+      this.getAllMediaFromArtist(artistName);
     }
   }
 
@@ -89,18 +89,20 @@ export class AlbumCollectionComponent implements OnInit {
     if (this.totalItems == 0) {
       this.displayMessageNotFound = true;
       this.displaySortButtons = false;
+      return false;
     } else {
       this.displayMessageNotFound = false;
       this.displaySortButtons = true
       this.actualPage = 1;
+      return true;
     }
   }
 
-  validateEnoughElementsToPaginate() {
-    if (this.totalItems > this.DEFAULT_ITEMS_PER_PAGE) {
-      this.enoughElementsToPaginate = true;
+  validateEnoughElementsToPaginate(totalItems:number) {
+    if (totalItems > this.DEFAULT_ITEMS_PER_PAGE) {
+      return true;
     } else {
-      this.enoughElementsToPaginate = false;
+      return false;
     }
   }
 
