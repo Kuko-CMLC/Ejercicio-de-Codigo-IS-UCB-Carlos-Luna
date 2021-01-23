@@ -133,6 +133,8 @@ export class AlbumCollectionComponent implements OnInit {
     if (error.status === 0){
       this.displayLoadingIcon = false;
       this.displayMessageNotFound = true;
+      this.displaySortButtons = false;
+      this.enoughElementsToPaginate = false;
       this.resetPagination();
     }
   }

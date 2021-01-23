@@ -24,13 +24,16 @@
   transition: 0.5s;
 }
 .image-album:hover{
-  transform: scale(1.05);
+  margin-top: -10PX !important;
+  transform: scale(1.2);
+  z-index: 1;
   border-radius: 20px;
 }
 .card:hover {
   transform: scale(1.1);
 }
 .card {
+  background-color: #f4f4f4f4;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 50px;
@@ -44,7 +47,14 @@
 .header {
   padding-top: 40px;
 }
+.artist-name{
+  color: rgb(46, 46, 46)
+}
+.price-album{
+  color: black;
+}
 .mt-4 {
-  color: #e03f4c;
+  color: #e12c06;
   font-style: bold;
+  font-weight: 600;;
 }

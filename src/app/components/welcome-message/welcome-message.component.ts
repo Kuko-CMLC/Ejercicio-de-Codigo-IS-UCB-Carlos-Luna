@@ -8,6 +8,5 @@ import { Component, OnInit } from "@angular/core";
 export class WelcomeMessageComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

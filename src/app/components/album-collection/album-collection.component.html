@@ -17,19 +17,19 @@
     </div>
 
     <div *ngIf="displaySortButtons === true && displayLoadingIcon === false" class="row justify-content-left container-sort-buttons" data-aos="fade-left" data-aos-duration="500" data-aos-delay="1000">
-      <div class="col-sm-2 col-md-1 col-1 col-xl-1 col-5">
+      <div class="col-sm-12 col-md-1 col-1 col-xl-1 col-5">
         <label for="onSortList" class="col-form-label sort-title">
-          Sort By:
+          SORT BY:
         </label>
       </div>
-      <div class="col-sm-10 col-md-8 col-8 col-xl-6">
+      <div class="col-sm-12 col-md-8 col-12 col-xl-10">
         <button class=" btn btn-primary sort-btn" (click)="onSortList('A-Z')"> Higher to Lower (A-Z) </button>
         <button class=" btn btn-primary sort-btn" (click)="onSortList('Z-A')"> Lower to Higher (Z-A) </button>
       </div>
     </div>
         
     <!-- Items collection -->
-    <div *ngIf="displayMessageNotFound == false && displayLoadingIcon === false" class="row justify-content-center">
+    <div *ngIf="displayMessageNotFound == false && displayLoadingIcon === false" class="row justify-content-center container-collections">
       <app-album-collection-item
         *ngFor="let album of albumCollection | paginate: {itemsPerPage: totalItemsPerPage, currentPage: actualPage}"
         [album]="album"
