@@ -4,7 +4,7 @@
   padding: 1% 5% 5% 5%;
 }
 .pagination-container {
-  margin-top: 2px;
+  margin-top: 8px;
 }
 .btn {
   height: 35px;
@@ -30,6 +30,9 @@
 .sort-title {
   text-align: left;
   margin: auto;
+  margin-top: 2px;
+  font-style: italic;
+  color: white;
 }
 .custom-pagination ::ng-deep .ngx-pagination .current {
   background: #e03f4c;
