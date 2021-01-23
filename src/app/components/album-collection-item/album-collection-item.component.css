@@ -13,18 +13,28 @@
 .profile-collection-item {
   height: 150px;
 }
-img {
+.image-album {
   margin: 10px auto 10px auto;
   object-fit: cover;
   height: 100%;
   width: 150px;
   border: 50%;
   display: block;
+  border-radius: 50%;;
+  transition: 0.5s;
+}
+.image-album:hover{
+  transform: scale(1.05);
+  border-radius: 20px;
+}
+.card:hover {
+  transform: scale(1.1);
 }
 .card {
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 50px;
+  transition: 0.5s;
 }
 .card-body {
   position: relative;
@@ -37,10 +47,4 @@ img {
 .mt-4 {
   color: #e03f4c;
   font-style: bold;
-}
-.my-pagination::ng-deep .page-item.active .page-link {
-  z-index: 1;
-  color: #FFFFFF;
-  background-color:red !important;
-  border-color: #009DA0;
 }
