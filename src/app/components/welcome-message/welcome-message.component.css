@@ -1,4 +1,4 @@
-.message{
+.message {
   text-align: center;
 }
 
@@ -6,4 +6,10 @@
   font-size: 0.95rem;
   color: rgb(53, 53, 53);
   font-style: italic;
+}
+
+.image-welcome {
+  margin-top: 30px;
+  width: 450px;
+  height: auto;
 }
