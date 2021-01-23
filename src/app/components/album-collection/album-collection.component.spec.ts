@@ -117,4 +117,64 @@ describe("AlbumCollectionComponent", () => {
     );
     expect(result).toEqual(2);
   });
+
+  it("should sort from Lower to Higher (Z-A)", () => {
+    let mockListCollection: albumCollectionModel[] = [];
+    const mockAlbum1: albumCollectionModel = {
+      artistName: "Lauv",
+      artworkUrl100: "anyImage",
+      artworkUrl60: "anyImage",
+      collectionName: "AlbumCollection",
+      collectionPrice: "1.0",
+    };
+    const mockAlbum2: albumCollectionModel = {
+      artistName: "Ricardo Arjona",
+      artworkUrl100: "anyImage",
+      artworkUrl60: "anyImage",
+      collectionName: "CollectionNameAlbum2",
+      collectionPrice: "4.0",
+    };
+    const mockAlbum3: albumCollectionModel = {
+      artistName: "Lauv",
+      artworkUrl100: "anyImage",
+      artworkUrl60: "anyImage",
+      collectionName: "Z-Name",
+      collectionPrice: "12.0",
+    };
+    mockListCollection.push(mockAlbum1,mockAlbum2,mockAlbum3);
+    component.albumCollection = mockListCollection;
+    component.onSortList('Z-A');
+    const result = component.albumCollection[0];
+    expect(result).toEqual(mockAlbum3)
+  });
+  
+  it("should sort from Higher to Lower (A-Z)", () => {
+    let mockListCollection: albumCollectionModel[] = [];
+    const mockAlbum1: albumCollectionModel = {
+      artistName: "Lauv",
+      artworkUrl100: "anyImage",
+      artworkUrl60: "anyImage",
+      collectionName: "MisucNameCollection",
+      collectionPrice: "1.0",
+    };
+    const mockAlbum2: albumCollectionModel = {
+      artistName: "Ricardo Arjona",
+      artworkUrl100: "anyImage",
+      artworkUrl60: "anyImage",
+      collectionName: "~DRIVING VIBES~ - EP",
+      collectionPrice: "4.0",
+    };
+    const mockAlbum3: albumCollectionModel = {
+      artistName: "Lauv",
+      artworkUrl100: "anyImage",
+      artworkUrl60: "anyImage",
+      collectionName: "~how i'm feeling~",
+      collectionPrice: "12.0",
+    };
+    mockListCollection.push(mockAlbum1,mockAlbum2,mockAlbum3);
+    component.albumCollection = mockListCollection;
+    component.onSortList('A-Z');
+    const result = component.albumCollection[0];
+    expect(result).toEqual(mockAlbum2)
+  });
 });
