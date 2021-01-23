@@ -19,9 +19,6 @@ export class ItunesService {
   constructor(private http: HttpClient) {}
 
   getAllContentForArtist(artistName: string): Observable<itunesResponseModel> {
-    console.log(
-      `${this.ituneContentSearchUrl}/${this.searchParameter}${artistName}`
-    );
     return this.http.post<itunesResponseModel>(
       `${this.ituneContentSearchUrl}/${this.searchParameter}${artistName}&entity=${this.entity}`,
       httpOptions

@@ -10,12 +10,12 @@
     </div>
 
     <!-- Message not found-->
-    <div *ngIf="albumCollectionNotFound == true">
+    <div *ngIf="displayMessageNotFound == true">
       <app-not-found-artist></app-not-found-artist>
     </div>
 
     <!-- Sort Buttons -->
-    <div *ngIf="showSortButtons === true" class="row justify-content-left container-sort-buttons">
+    <div *ngIf="displaySortButtons === true" class="row justify-content-left container-sort-buttons">
       <div class="col-sm-2 col-md-1 col-1 col-xl-1 col-5">
         <label for="SortList" class="col-form-label sort-title">
           Sort By:
@@ -28,9 +28,9 @@
     </div>
         
     <!-- Items collection -->
-    <div *ngIf="albumCollectionNotFound == false" class="row justify-content-center">
+    <div *ngIf="displayMessageNotFound == false" class="row justify-content-center">
       <app-album-collection-item
-        *ngFor="let album of albumCollection | paginate: {itemsPerPage: totalItemsPerPage, currentPage: acutalPage}"
+        *ngFor="let album of albumCollection | paginate: {itemsPerPage: totalItemsPerPage, currentPage: actualPage}"
         [album]="album"
         class="col-xl-3 col-lg-4 col-md-6"
       >
@@ -40,7 +40,7 @@
     <!-- Pagination Buttons -->
     <div *ngIf="enoughElementsToPaginate==true" class="row justify-content-center">  
       <div class="pagination-container">
-        <pagination-controls (pageChange)="acutalPage = $event"
+        <pagination-controls (pageChange)="actualPage = $event"
         previousLabel="Prev"
         nextLabel="Next"
         responsive="true"

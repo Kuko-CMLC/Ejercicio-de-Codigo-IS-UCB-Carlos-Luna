@@ -11,8 +11,8 @@ import { ItunesService } from "src/app/services/itunes.service";
 export class AlbumCollectionComponent implements OnInit {
   itunesResponse: collectionResponseModel;
   albumCollection: itunesModel[];
-  albumCollectionNotFound: boolean = false;
-  showSortButtons:boolean = false;
+  displayMessageNotFound: boolean = false;
+  displaySortButtons:boolean = false;
   displayWelcomeMessage:boolean = true;
 
   //Pagination Variables
@@ -21,20 +21,19 @@ export class AlbumCollectionComponent implements OnInit {
   totalItemsPerPage: number = 8;
   displayButtonShowAll: boolean = true;
   enoughElementsToPaginate: boolean;
-  acutalPage: number = 1;
+  actualPage: number = 1;
   constructor(private itunesService: ItunesService) {}
 
   ngOnInit() {
-   // this.getAllAlbumsCollection("Lauv");
   }
 
   getAllAlbumsCollection(artistName: string) {
     this.itunesService
       .getAllContentForArtist(artistName)
       .subscribe((itunesResponse) => {
-        this.showSortButtons=true;
+        this.displaySortButtons=true;
         this.getOnlyAlbumCollectionOfAnArtist(artistName,itunesResponse.results);
-        this.validateEmptyNotEmptyAlbum();
+        this.validateNotEmptyAlbum();
         this.validateEnoughElementsToPaginate();
       });
   }
@@ -46,8 +45,7 @@ export class AlbumCollectionComponent implements OnInit {
 
   searchArtistAlbum(artistName: string) {
     if (artistName === "" || artistName === ' '){
-      this.displayWelcomeMessage=true;
-      this.albumCollectionNotFound=false;
+      this.setStatesForWelcomePage();
     }
     else{
       this.displayWelcomeMessage=false;
@@ -59,7 +57,7 @@ export class AlbumCollectionComponent implements OnInit {
     if (AllItems == true) {
       this.totalItemsPerPage = this.totalItems;
       this.displayButtonShowAll = false;
-      this.acutalPage = 1;
+      this.actualPage = 1;
     } else {
       this.totalItemsPerPage = this.DEFAULT_ITEMS_PER_PAGE;
       this.displayButtonShowAll = true;
@@ -86,6 +84,17 @@ export class AlbumCollectionComponent implements OnInit {
     }
   }
 
+  validateNotEmptyAlbum() {
+    if (this.totalItems == 0) {
+      this.displayMessageNotFound = true;
+      this.displaySortButtons = false;
+    } else {
+      this.displayMessageNotFound = false;
+      this.displaySortButtons = true
+      this.actualPage = 1;
+    }
+  }
+
   validateEnoughElementsToPaginate() {
     if (this.totalItems > this.DEFAULT_ITEMS_PER_PAGE) {
       this.enoughElementsToPaginate = true;
@@ -94,13 +103,13 @@ export class AlbumCollectionComponent implements OnInit {
     }
   }
 
-  validateEmptyNotEmptyAlbum() {
-    if (this.totalItems == 0) {
-      this.albumCollectionNotFound = true;
-      this.showSortButtons = false;
-    } else {
-      this.albumCollectionNotFound = false;
-      this.showSortButtons = true
-    }
+  //set states
+  setStatesForWelcomePage(){
+    this.displayWelcomeMessage=true;
+    this.displayMessageNotFound=false;
+    this.albumCollection = [];
+    this.displayButtonShowAll=false;
+    this.displaySortButtons=false;
+    this.enoughElementsToPaginate=false;
   }
 }
