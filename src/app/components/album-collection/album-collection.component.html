@@ -1,14 +1,20 @@
 <body>
   <div class="contianer">
     <app-filter-field
-     (searchArtistAlbum)="searchArtistAlbum($event)"
-     >
+     (searchArtistAlbum)="searchArtistAlbum($event)" >
     </app-filter-field>
+     
+    <!-- Welcome Message-->
+    <div *ngIf="displayWelcomeMessage == true">
+      <app-welcome-message></app-welcome-message>
+    </div>
 
+    <!-- Message not found-->
     <div *ngIf="albumCollectionNotFound == true">
       <app-not-found-artist></app-not-found-artist>
     </div>
 
+    <!-- Sort Buttons -->
     <div *ngIf="showSortButtons === true" class="row justify-content-left container-sort-buttons">
       <div class="col-sm-2 col-md-1 col-1 col-xl-1 col-5">
         <label for="SortList" class="col-form-label sort-title">
@@ -20,7 +26,8 @@
         <button class=" btn btn-primary sort-btn" (click)="sortList('Z-A')"> Lower to Higher (Z-A) </button>
       </div>
     </div>
-    
+        
+    <!-- Items collection -->
     <div *ngIf="albumCollectionNotFound == false" class="row justify-content-center">
       <app-album-collection-item
         *ngFor="let album of albumCollection | paginate: {itemsPerPage: totalItemsPerPage, currentPage: acutalPage}"
@@ -29,6 +36,8 @@
       >
       </app-album-collection-item>
     </div>
+
+    <!-- Pagination Buttons -->
     <div *ngIf="enoughElementsToPaginate==true" class="row justify-content-center">  
       <div class="pagination-container">
         <pagination-controls (pageChange)="acutalPage = $event"
@@ -37,8 +46,8 @@
         responsive="true"
         ></pagination-controls>
       </div>
-      <button *ngIf="displayButtonShowAll==true" class="btn btn-primary" (click)="ShowAllItems(true)"> Show All</button>
-      <button *ngIf="displayButtonShowAll==false" class="btn btn-primary" (click)="ShowAllItems(false)"> Return Pagination </button>
+      <button *ngIf="displayButtonShowAll==true" class="btn btn-primary pagination-btn" (click)="ShowAllItems(true)"> Show All</button>
+      <button *ngIf="displayButtonShowAll==false" class="btn btn-primary pagination-btn" (click)="ShowAllItems(false)"> Return Pagination </button>
     </div>
   </div>
 </body>

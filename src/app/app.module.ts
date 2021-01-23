@@ -10,6 +10,7 @@ import { FilterFieldComponent } from './components/filter-field/filter-field.com
 import { FormsModule } from '@angular/forms';
 import { NotFoundArtistComponent } from './components/not-found-artist/not-found-artist.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { WelcomeMessageComponent } from './components/welcome-message/welcome-message.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AlbumCollectionComponent,
     FilterFieldComponent,
     NotFoundArtistComponent,
+    WelcomeMessageComponent,
   ],
   imports: [
     BrowserModule,

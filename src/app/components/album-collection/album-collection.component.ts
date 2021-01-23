@@ -13,6 +13,7 @@ export class AlbumCollectionComponent implements OnInit {
   albumCollection: itunesModel[];
   albumCollectionNotFound: boolean = false;
   showSortButtons:boolean = false;
+  displayWelcomeMessage:boolean = true;
 
   //Pagination Variables
   DEFAULT_ITEMS_PER_PAGE: number = 8;
@@ -24,7 +25,7 @@ export class AlbumCollectionComponent implements OnInit {
   constructor(private itunesService: ItunesService) {}
 
   ngOnInit() {
-    this.getAllAlbumsCollection("Lauv");
+   // this.getAllAlbumsCollection("Lauv");
   }
 
   getAllAlbumsCollection(artistName: string) {
@@ -45,9 +46,11 @@ export class AlbumCollectionComponent implements OnInit {
 
   searchArtistAlbum(artistName: string) {
     if (artistName === "" || artistName === ' '){
-
+      this.displayWelcomeMessage=true;
+      this.albumCollectionNotFound=false;
     }
     else{
+      this.displayWelcomeMessage=false;
       this.getAllAlbumsCollection(artistName);
     }
   }

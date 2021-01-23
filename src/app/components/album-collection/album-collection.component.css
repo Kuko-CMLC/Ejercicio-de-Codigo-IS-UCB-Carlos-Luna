@@ -21,12 +21,12 @@
   padding-right: 0px;
 }
 
-.sort-btn{
+.sort-btn,.pagination-btn{
   border: none; 
   background: #0058de;
   margin: 5px;
 }
-.sort-btn:hover{
+.sort-btn:hover,.pagination-btn:hover{
   border: none; 
   background: #0045ac;
 }
