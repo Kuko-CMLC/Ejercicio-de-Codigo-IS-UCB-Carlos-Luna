@@ -28,10 +28,10 @@
   background-image: url("../../../assets/images/backGroundImageWelcome.jpg");
   background-position: center bottom;
   background-size: cover;
-  font-size: 0.95rem;
   color: rgb(53, 53, 53);
   box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
   font-style: italic;
+  border-radius: 20px !important;
 }
 .image-welcome {
   border-radius: 50%;

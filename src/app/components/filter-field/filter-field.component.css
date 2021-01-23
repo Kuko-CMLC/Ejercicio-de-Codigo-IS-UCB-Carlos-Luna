@@ -17,6 +17,11 @@
   font-style: italic;
 }
 
+.form-control{
+  border-radius: 20px;
+  margin-left: 5px;
+}
+
 .rounded{
   border:  1px solid #e7e8eb;
 }

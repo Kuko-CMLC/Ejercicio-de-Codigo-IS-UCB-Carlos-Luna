@@ -12,8 +12,8 @@
       <app-not-found-artist></app-not-found-artist>
     </div>
 
-    <div *ngIf="displayLoadingIcon == true"> 
-      <img class="mx-auto d-block image-welcome" src="https://thumbs.gfycat.com/AchingSpeedyArmyworm-size_restricted.gif" alt="">
+    <div *ngIf="displayLoadingIcon == true" class="container-icon-loading"> 
+      <img class="mx-auto d-block icon-loading" src="https://thumbs.gfycat.com/AchingSpeedyArmyworm-size_restricted.gif" alt="">
     </div>
 
     <div *ngIf="displaySortButtons === true && displayLoadingIcon === false" class="row justify-content-left container-sort-buttons" data-aos="fade-left" data-aos-duration="500" data-aos-delay="1000">
@@ -29,7 +29,7 @@
     </div>
         
     <!-- Items collection -->
-    <div *ngIf="displayMessageNotFound == false" class="row justify-content-center">
+    <div *ngIf="displayMessageNotFound == false && displayLoadingIcon === false" class="row justify-content-center">
       <app-album-collection-item
         *ngFor="let album of albumCollection | paginate: {itemsPerPage: totalItemsPerPage, currentPage: actualPage}"
         [album]="album"
@@ -39,12 +39,13 @@
     </div>
 
     <!-- Pagination Buttons -->
-    <div *ngIf="enoughElementsToPaginate==true" class="row justify-content-center">  
+    <div *ngIf="enoughElementsToPaginate==true && displayLoadingIcon === false" class="row justify-content-center">  
       <div class="pagination-container">
         <pagination-controls (pageChange)="actualPage = $event"
-        previousLabel="Prev"
-        nextLabel="Next"
-        responsive="true"
+          class="custom-pagination"
+          previousLabel="Prev"
+          nextLabel="Next"
+          responsive="true"
         ></pagination-controls>
       </div>
       <button *ngIf="displayButtonShowAll==true" class="btn btn-primary pagination-btn" (click)="onShowAllItems(true)"> Show All</button>

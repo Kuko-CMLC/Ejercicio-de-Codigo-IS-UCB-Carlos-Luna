@@ -8,6 +8,7 @@
   background-size: cover;
   color: rgb(53, 53, 53);
   box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+  border-radius: 20px;
 }
 .message-container {
   font-size: 0.95rem;

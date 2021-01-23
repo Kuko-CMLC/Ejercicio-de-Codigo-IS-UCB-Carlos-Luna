@@ -1,37 +1,46 @@
-
-.contianer{
-  margin:  auto;
+.contianer {
+  margin: auto;
   max-width: 1600px;
   padding: 1% 5% 5% 5%;
 }
-
-.pagination-container{
+.pagination-container {
   margin-top: 2px;
 }
-
-.btn{
+.btn {
   height: 35px;
 }
-
-.container-sort-buttons{
+.container-sort-buttons {
   max-width: 1200px;
   padding-top: 0px;
   padding-left: 5%;
   padding-bottom: 10px;
   padding-right: 0px;
 }
-
-.sort-btn,.pagination-btn{
-  border: none; 
-  background: #0058de;
+.sort-btn,
+.pagination-btn {
+  border: none;
+  background: #f75866;
   margin: 5px;
 }
-.sort-btn:hover,.pagination-btn:hover{
-  border: none; 
-  background: #0045ac;
+.sort-btn:hover,
+.pagination-btn:hover {
+  border: none;
+  background: #e03f4c;
 }
-
-.sort-title{
+.sort-title {
   text-align: left;
   margin: auto;
+}
+.custom-pagination ::ng-deep .ngx-pagination .current {
+  background: #e03f4c;
+}
+.container-icon-loading{
+  margin: auto;
+  max-width: 1350px;
+  max-height: 600px;
+  background-color: white;
+  border-radius: 20px;
+}
+.icon-loading{
+  height: 500px;
 }

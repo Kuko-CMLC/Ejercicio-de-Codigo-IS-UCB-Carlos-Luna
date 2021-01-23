@@ -34,8 +34,13 @@ img {
 .header {
   padding-top: 40px;
 }
-
 .mt-4 {
-  color: #0058dc;
+  color: #e03f4c;
   font-style: bold;
+}
+.my-pagination::ng-deep .page-item.active .page-link {
+  z-index: 1;
+  color: #FFFFFF;
+  background-color:red !important;
+  border-color: #009DA0;
 }
