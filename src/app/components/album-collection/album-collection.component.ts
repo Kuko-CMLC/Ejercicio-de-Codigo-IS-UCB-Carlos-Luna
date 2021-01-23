@@ -22,15 +22,18 @@ export class AlbumCollectionComponent implements OnInit {
   displayButtonShowAll: boolean = true;
   enoughElementsToPaginate: boolean;
   actualPage: number = 1;
+  displayLoadingIcon:boolean = false;
   constructor(private itunesService: ItunesService) {}
 
   ngOnInit() {
   }
 
   getAllMediaFromArtist(artistName: string) {
+    this.displayLoadingIcon = true;
     this.itunesService
       .getAllContentForArtist(artistName)
       .subscribe((itunesResponse) => {
+        this.displayLoadingIcon = false
         this.totalItems = this.getOnlyAlbumCollectionOfAnArtist(artistName,itunesResponse.results);
         this.enoughElementsToPaginate = this.validateEnoughElementsToPaginate(this.totalItems);
         this.validateNotEmptyAlbum();

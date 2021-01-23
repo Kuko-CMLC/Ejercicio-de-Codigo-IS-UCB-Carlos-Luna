@@ -4,15 +4,19 @@
      (searchArtistAlbum)="searchArtistAlbum($event)" >
     </app-filter-field>
      
-    <div *ngIf="displayWelcomeMessage == true">
+    <div *ngIf="displayWelcomeMessage == true && displayLoadingIcon === false">
       <app-welcome-message></app-welcome-message>
     </div>
 
-    <div *ngIf="displayMessageNotFound == true">
+    <div *ngIf="displayMessageNotFound == true && displayLoadingIcon === false">
       <app-not-found-artist></app-not-found-artist>
     </div>
 
-    <div *ngIf="displaySortButtons === true" class="row justify-content-left container-sort-buttons">
+    <div *ngIf="displayLoadingIcon == true"> 
+      <img class="mx-auto d-block image-welcome" src="https://thumbs.gfycat.com/AchingSpeedyArmyworm-size_restricted.gif" alt="">
+    </div>
+
+    <div *ngIf="displaySortButtons === true && displayLoadingIcon === false" class="row justify-content-left container-sort-buttons" data-aos="fade-left" data-aos-duration="500" data-aos-delay="1000">
       <div class="col-sm-2 col-md-1 col-1 col-xl-1 col-5">
         <label for="onSortList" class="col-form-label sort-title">
           Sort By:
