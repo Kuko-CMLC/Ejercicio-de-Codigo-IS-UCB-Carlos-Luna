@@ -31,8 +31,9 @@
   background: #00776b;
 }
 .sort-title {
-  text-align: left;
+  text-align: left !important;
   margin: auto;
+  width: 100%;
   margin-top: 2px;
   font-style: italic;
   color: white;

@@ -32,4 +32,10 @@
     width: 200px;
     height: auto;
   }
+  .title {
+    font-size: 52px !important;
+  }
+  .second-title{
+    font-size: 22px !important;
+  }
 }

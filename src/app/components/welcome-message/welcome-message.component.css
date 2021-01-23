@@ -43,4 +43,8 @@
   .image-welcome {
     width: 150px;
   }
+  .message-header {
+    font-size: 52px !important;
+    font-style: normal !important;
+  }
 }
