@@ -1,15 +1,46 @@
 .message {
   text-align: center;
 }
-
+.container{
+  max-width: 1600px;
+}
+.message-more-information{
+  color: black;
+  padding: 2%;
+  font-size: 14px;
+}
+.message-content{
+  font-size: 18px;
+}
+.message-container-more-information{
+  margin-top: 40px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.message-header{
+  font-size: 56px;
+}
 .message-container {
+  background-image: url("../../../assets/images/BackGroundImage.jpg");
+  background-position: center bottom;
+  background-size: cover;
   font-size: 0.95rem;
   color: rgb(53, 53, 53);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
   font-style: italic;
 }
-
 .image-welcome {
+  border-radius: 50%;
   margin-top: 30px;
-  width: 450px;
+  width: 250px;
   height: auto;
+}
+@media (max-width:991.5px)
+{ 
+  .image-welcome {
+    width: 150px;
+  }
 }
