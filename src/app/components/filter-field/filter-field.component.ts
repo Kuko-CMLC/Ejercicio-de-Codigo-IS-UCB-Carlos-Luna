@@ -7,7 +7,6 @@ import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 })
 export class FilterFieldComponent implements OnInit {
   @Output() searchArtistAlbum: EventEmitter<string> = new EventEmitter();
-  @Output() sortListBy: EventEmitter<string> = new EventEmitter();
   artistNameInput: string;
 
   constructor() {}
@@ -16,9 +15,5 @@ export class FilterFieldComponent implements OnInit {
 
   onSearchAlbumArtist() {
     this.searchArtistAlbum.emit(this.artistNameInput);
-  }
-
-  sortList(sort: string) {
-    this.sortListBy.emit(sort);
   }
 }

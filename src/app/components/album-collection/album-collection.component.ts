@@ -49,11 +49,12 @@ export class AlbumCollectionComponent implements OnInit {
     }
     else{
       this.displayWelcomeMessage=false;
+      this.resetPagination();
       this.getAllAlbumsCollection(artistName);
     }
   }
 
-  ShowAllItems(AllItems: boolean) {
+  onShowAllItems(AllItems: boolean) {
     if (AllItems == true) {
       this.totalItemsPerPage = this.totalItems;
       this.displayButtonShowAll = false;
@@ -64,7 +65,7 @@ export class AlbumCollectionComponent implements OnInit {
     }
   }
 
-  sortList(order: string) {
+  onSortList(order: string) {
     if (order == "A-Z")
       this.albumCollection = this.albumCollection.sort((a, b) =>
         a.collectionName.localeCompare(b.collectionName)
@@ -108,8 +109,13 @@ export class AlbumCollectionComponent implements OnInit {
     this.displayWelcomeMessage=true;
     this.displayMessageNotFound=false;
     this.albumCollection = [];
-    this.displayButtonShowAll=false;
     this.displaySortButtons=false;
     this.enoughElementsToPaginate=false;
+    this.resetPagination();
+  }
+
+  resetPagination(){
+    this.displayButtonShowAll=true;
+    this.totalItemsPerPage = this.DEFAULT_ITEMS_PER_PAGE;
   }
 }
