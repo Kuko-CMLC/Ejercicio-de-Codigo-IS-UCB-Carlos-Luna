@@ -9,6 +9,7 @@ import { AlbumCollectionComponent } from './components/album-collection/album-co
 import { FilterFieldComponent } from './components/filter-field/filter-field.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundArtistComponent } from './components/not-found-artist/not-found-artist.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NotFoundArtistComponent } from './components/not-found-artist/not-found
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,20 +2,43 @@
   <div class="contianer">
     <app-filter-field
      (searchArtistAlbum)="searchArtistAlbum($event)"
-     (sortListBy)="sortListBy($event)">
+     >
     </app-filter-field>
 
-    <div *ngIf="notFound == true">
+    <div *ngIf="albumCollectionNotFound == true">
       <app-not-found-artist></app-not-found-artist>
     </div>
 
-    <div *ngIf="notFound == false" class="row justify-content-center">
+    <div *ngIf="showSortButtons === true" class="row justify-content-left container-sort-buttons">
+      <div class="col-sm-2 col-md-1 col-1 col-xl-1 col-5">
+        <label for="SortList" class="col-form-label sort-title">
+          Sort By:
+        </label>
+      </div>
+      <div class="col-sm-10 col-md-8 col-8 col-xl-6">
+        <button class=" btn btn-primary sort-btn" (click)="sortList('A-Z')"> Higher to Lower (A-Z) </button>
+        <button class=" btn btn-primary sort-btn" (click)="sortList('Z-A')"> Lower to Higher (Z-A) </button>
+      </div>
+    </div>
+    
+    <div *ngIf="albumCollectionNotFound == false" class="row justify-content-center">
       <app-album-collection-item
-        *ngFor="let album of albumCollection"
+        *ngFor="let album of albumCollection | paginate: {itemsPerPage: totalItemsPerPage, currentPage: acutalPage}"
         [album]="album"
         class="col-xl-3 col-lg-4 col-md-6"
       >
       </app-album-collection-item>
+    </div>
+    <div *ngIf="enoughElementsToPaginate==true" class="row justify-content-center">  
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="acutalPage = $event"
+        previousLabel="Prev"
+        nextLabel="Next"
+        responsive="true"
+        ></pagination-controls>
+      </div>
+      <button *ngIf="displayButtonShowAll==true" class="btn btn-primary" (click)="ShowAllItems(true)"> Show All</button>
+      <button *ngIf="displayButtonShowAll==false" class="btn btn-primary" (click)="ShowAllItems(false)"> Return Pagination </button>
     </div>
   </div>
 </body>
