@@ -1,0 +1,55 @@
+<body>
+  <div class="contianer">
+    <app-filter-field
+      (searchArtistAlbum)="searchArtistAlbum($event)" >
+    </app-filter-field>
+     
+    <div *ngIf="displayWelcomeMessage == true && displayLoadingIcon === false">
+      <app-welcome-message></app-welcome-message>
+    </div>
+
+    <div *ngIf="displayMessageNotFound == true && displayLoadingIcon === false">
+      <app-not-found-artist></app-not-found-artist>
+    </div>
+
+    <div *ngIf="displayLoadingIcon == true" class="container-icon-loading"> 
+      <img class="mx-auto d-block icon-loading" src="https://thumbs.gfycat.com/AchingSpeedyArmyworm-size_restricted.gif" alt="">
+    </div>
+
+    <div *ngIf="displaySortButtons === true && displayLoadingIcon === false" class="row justify-content-left container-sort-buttons" data-aos="fade-left" data-aos-duration="500" data-aos-delay="1000">
+      <div class="col-sm-12 col-md-2 col-lg-2 col-2 col-xl-1 col-5">
+        <label for="onSortList" class="col-form-label sort-title">
+          SORT BY:
+        </label>
+      </div>
+      <div class="col-sm-12 col-md-8 col-12 col-xl-10">
+        <button class=" btn btn-primary sort-btn" (click)="onSortList('A-Z')"> Higher to Lower (A-Z) </button>
+        <button class=" btn btn-primary sort-btn" (click)="onSortList('Z-A')"> Lower to Higher (Z-A) </button>
+      </div>
+    </div>
+        
+    <!-- Items collection -->
+    <div *ngIf="displayMessageNotFound == false && displayLoadingIcon === false" class="row justify-content-center container-collections">
+      <app-album-collection-item
+        *ngFor="let album of albumCollection | paginate: {itemsPerPage: totalItemsPerPage, currentPage: actualPage}"
+        [album]="album"
+        class="col-xl-3 col-lg-4 col-md-6"
+      >
+      </app-album-collection-item>
+    </div>
+
+    <!-- Pagination Buttons -->
+    <div *ngIf="enoughElementsToPaginate==true && displayLoadingIcon === false" class="row justify-content-center">  
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="actualPage = $event"
+          class="custom-pagination"
+          previousLabel="Prev"
+          nextLabel="Next"
+          responsive="true"
+        ></pagination-controls>
+      </div>
+      <button *ngIf="displayButtonShowAll==true" class="btn btn-primary pagination-btn" (click)="onShowAllItems(true)"> Show All</button>
+      <button *ngIf="displayButtonShowAll==false" class="btn btn-primary pagination-btn" (click)="onShowAllItems(false)"> Return Pagination </button>
+    </div>
+  </div>
+</body>

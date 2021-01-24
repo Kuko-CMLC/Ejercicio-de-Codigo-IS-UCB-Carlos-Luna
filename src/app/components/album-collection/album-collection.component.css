@@ -1,0 +1,63 @@
+.contianer {
+  margin: auto;
+  max-width: 1600px;
+  padding: 1% 5% 5% 5%;
+}
+.container-collections {
+  margin: auto;
+  max-width: 1250px;
+}
+.pagination-container {
+  margin-top: 8px;
+}
+.btn {
+  height: 35px;
+}
+.container-sort-buttons {
+  max-width: 1600px;
+  padding-left: 5%;
+  padding-bottom: 4%;
+  padding-right: 0px;
+}
+.sort-btn,
+.pagination-btn {
+  border: none;
+  background: #03b7a6;
+  margin: 5px;
+}
+.sort-btn:hover,
+.pagination-btn:hover {
+  border: none;
+  background: #00776b;
+}
+.sort-title {
+  text-align: left !important;
+  margin: auto;
+  width: 100%;
+  margin-top: 2px;
+  font-style: italic;
+  color: white;
+  font-weight: 600 !important;
+}
+.custom-pagination ::ng-deep .ngx-pagination .current {
+  background: #03b7a6;
+}
+.container-icon-loading {
+  margin: auto;
+  max-width: 1350px;
+  max-height: 600px;
+  background-color: white;
+  border-radius: 20px;
+}
+.icon-loading {
+  height: 500px;
+}
+@media (max-width: 991.5px) {
+  .icon-loading {
+    width: 200px;
+    height: auto;
+  }
+  .container-sort-buttons {
+    padding-bottom: 5%;
+  }
+}
