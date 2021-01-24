@@ -16,7 +16,7 @@
 .container-sort-buttons {
   max-width: 1600px;
   padding-left: 5%;
-  padding-bottom: 3%;
+  padding-bottom: 4%;
   padding-right: 0px;
 }
 .sort-btn,
@@ -56,5 +56,8 @@
   .icon-loading {
     width: 200px;
     height: auto;
+  }
+  .container-sort-buttons {
+    padding-bottom: 5%;
   }
 }
