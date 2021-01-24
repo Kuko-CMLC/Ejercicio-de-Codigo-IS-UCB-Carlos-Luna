@@ -27,7 +27,7 @@ describe("NotFoundArtistComponent", () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector("h2").textContent).toContain(
-      "Artist not found, please try with another name"
+      "Artist not found, please try with another name."
     );
   });
 
