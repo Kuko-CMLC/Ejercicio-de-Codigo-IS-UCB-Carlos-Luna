@@ -1,22 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-*
-{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+@import "~bootstrap/dist/css/bootstrap.min.css";
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-body
-{
-    background-color: white;
+body {
+  background: rgb(255,44,102);
+  background: linear-gradient(180deg, rgba(255,44,102,1) 0%, rgba(252,92,58,1) 74%); 
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-
 
 @media (max-width: 992px) {
-    body
-    {
-        margin-top: 76px;
-    }
+  body {
+    margin-top: 76px;
+  }
 }

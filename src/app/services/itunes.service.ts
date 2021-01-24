@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: "root",
 })
 export class ItunesService {
-  ituneContentSearchUrl: string = "https://itunes.apple.com/";
+  ituneContentSearchUrl: string = "https://itunes.apple.com";
   searchParameter: string = "search?term=";
   entity: string = "album";
   constructor(private http: HttpClient) {}

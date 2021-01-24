@@ -1,34 +1,35 @@
 <body>
   <div class="contianer">
     <app-filter-field
-     (searchArtistAlbum)="searchArtistAlbum($event)" >
+      (searchArtistAlbum)="searchArtistAlbum($event)" >
     </app-filter-field>
      
-    <!-- Welcome Message-->
-    <div *ngIf="displayWelcomeMessage == true">
+    <div *ngIf="displayWelcomeMessage == true && displayLoadingIcon === false">
       <app-welcome-message></app-welcome-message>
     </div>
 
-    <!-- Message not found-->
-    <div *ngIf="displayMessageNotFound == true">
+    <div *ngIf="displayMessageNotFound == true && displayLoadingIcon === false">
       <app-not-found-artist></app-not-found-artist>
     </div>
 
-    <!-- Sort Buttons -->
-    <div *ngIf="displaySortButtons === true" class="row justify-content-left container-sort-buttons">
-      <div class="col-sm-2 col-md-1 col-1 col-xl-1 col-5">
+    <div *ngIf="displayLoadingIcon == true" class="container-icon-loading"> 
+      <img class="mx-auto d-block icon-loading" src="https://thumbs.gfycat.com/AchingSpeedyArmyworm-size_restricted.gif" alt="">
+    </div>
+
+    <div *ngIf="displaySortButtons === true && displayLoadingIcon === false" class="row justify-content-left container-sort-buttons" data-aos="fade-left" data-aos-duration="500" data-aos-delay="1000">
+      <div class="col-sm-12 col-md-2 col-2 col-xl-2 col-5">
         <label for="onSortList" class="col-form-label sort-title">
-          Sort By:
+          SORT BY:
         </label>
       </div>
-      <div class="col-sm-10 col-md-8 col-8 col-xl-6">
+      <div class="col-sm-12 col-md-8 col-12 col-xl-10">
         <button class=" btn btn-primary sort-btn" (click)="onSortList('A-Z')"> Higher to Lower (A-Z) </button>
         <button class=" btn btn-primary sort-btn" (click)="onSortList('Z-A')"> Lower to Higher (Z-A) </button>
       </div>
     </div>
         
     <!-- Items collection -->
-    <div *ngIf="displayMessageNotFound == false" class="row justify-content-center">
+    <div *ngIf="displayMessageNotFound == false && displayLoadingIcon === false" class="row justify-content-center container-collections">
       <app-album-collection-item
         *ngFor="let album of albumCollection | paginate: {itemsPerPage: totalItemsPerPage, currentPage: actualPage}"
         [album]="album"
@@ -38,12 +39,13 @@
     </div>
 
     <!-- Pagination Buttons -->
-    <div *ngIf="enoughElementsToPaginate==true" class="row justify-content-center">  
+    <div *ngIf="enoughElementsToPaginate==true && displayLoadingIcon === false" class="row justify-content-center">  
       <div class="pagination-container">
         <pagination-controls (pageChange)="actualPage = $event"
-        previousLabel="Prev"
-        nextLabel="Next"
-        responsive="true"
+          class="custom-pagination"
+          previousLabel="Prev"
+          nextLabel="Next"
+          responsive="true"
         ></pagination-controls>
       </div>
       <button *ngIf="displayButtonShowAll==true" class="btn btn-primary pagination-btn" (click)="onShowAllItems(true)"> Show All</button>

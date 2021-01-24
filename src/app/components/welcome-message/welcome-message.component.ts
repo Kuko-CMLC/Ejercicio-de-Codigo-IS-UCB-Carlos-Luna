@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-welcome-message',
-  templateUrl: './welcome-message.component.html',
-  styleUrls: ['./welcome-message.component.css']
+  selector: "app-welcome-message",
+  templateUrl: "./welcome-message.component.html",
+  styleUrls: ["./welcome-message.component.css"],
 })
 export class WelcomeMessageComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

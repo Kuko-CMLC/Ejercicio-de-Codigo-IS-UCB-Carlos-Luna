@@ -27,8 +27,8 @@ describe("FilterFieldComponent", () => {
     component.artistNameInput = "Maroon 5";
     spyOn(component.searchArtistAlbum, "emit");
     const nativeElement = fixture.nativeElement;
-    const button = nativeElement.querySelector("button");
-    button.dispatchEvent(new Event("click"));
+    const button = nativeElement.querySelector("form");
+    button.dispatchEvent(new Event("submit"));
     fixture.detectChanges();
     expect(component.searchArtistAlbum.emit).toHaveBeenCalledWith("Maroon 5");
   });

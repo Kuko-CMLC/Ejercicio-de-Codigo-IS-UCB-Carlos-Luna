@@ -9,44 +9,51 @@ import { ItunesService } from "src/app/services/itunes.service";
   styleUrls: ["./album-collection.component.css"],
 })
 export class AlbumCollectionComponent implements OnInit {
+  DEFAULT_ITEMS_PER_PAGE: number = 8;
+
   itunesResponse: itunesResponseModel;
   albumCollection: albumCollectionModel[];
   displayMessageNotFound: boolean = false;
-  displaySortButtons:boolean = false;
-  displayWelcomeMessage:boolean = true;
+  displaySortButtons: boolean = false;
+  displayWelcomeMessage: boolean = true;
 
-  //Pagination Variables
-  DEFAULT_ITEMS_PER_PAGE: number = 8;
   totalItems: number;
   totalItemsPerPage: number = 8;
   displayButtonShowAll: boolean = true;
   enoughElementsToPaginate: boolean;
   actualPage: number = 1;
+  displayLoadingIcon: boolean = false;
   constructor(private itunesService: ItunesService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getAllMediaFromArtist(artistName: string) {
-    this.itunesService
-      .getAllContentForArtist(artistName)
-      .subscribe((itunesResponse) => {
-        this.totalItems = this.getOnlyAlbumCollectionOfAnArtist(artistName,itunesResponse.results);
+    this.displayLoadingIcon = true;
+    this.itunesService.getAllContentForArtist(artistName).subscribe(
+      (itunesResponse) => {
+        this.displayLoadingIcon = false;
+        this.totalItems = this.getOnlyAlbumCollectionOfAnArtist(artistName, itunesResponse.results);
         this.enoughElementsToPaginate = this.validateEnoughElementsToPaginate(this.totalItems);
         this.validateNotEmptyAlbum();
+    },error => {
+      this.exeptionOption(error,artistName);
     });
   }
 
-  getOnlyAlbumCollectionOfAnArtist(artistName: string, albumCollection: albumCollectionModel[]) {
-    this.albumCollection = albumCollection.filter((album) => this.validateSameArtist(album.artistName, artistName));
+  getOnlyAlbumCollectionOfAnArtist(
+    artistName: string,
+    albumCollection: albumCollectionModel[]
+  ) {
+    this.albumCollection = albumCollection.filter((album) =>
+      this.validateSameArtist(album.artistName, artistName)
+    );
     return this.albumCollection.length;
   }
 
   searchArtistAlbum(artistName: string) {
-    if (artistName === "" || artistName === ' '){
+    if (artistName === "" || artistName === " ") {
       this.setStatesForWelcomePage();
-    }
-    else{
+    } else {
       this.displaySortButtons = true;
       this.displayWelcomeMessage = false;
       this.resetPagination();
@@ -67,16 +74,15 @@ export class AlbumCollectionComponent implements OnInit {
 
   onSortList(order: string) {
     if (order == "A-Z")
-      this.albumCollection = this.albumCollection.sort((a, b) =>
-        a.collectionName.localeCompare(b.collectionName)
+      this.albumCollection = this.albumCollection.sort((albumA, albumB) =>
+        albumA.collectionName.localeCompare(albumB.collectionName)
       );
     else
-      this.albumCollection = this.albumCollection.sort((b, a) =>
-        a.collectionName.localeCompare(b.collectionName)
+      this.albumCollection = this.albumCollection.sort((albumB, albumA) =>
+        albumA.collectionName.localeCompare(albumB.collectionName)
       );
   }
 
-  //Validators
   validateSameArtist(artistAlbumFromCollection: string, artistAlbum: string) {
     if (artistAlbumFromCollection.toLowerCase() === artistAlbum.toLowerCase()) {
       return true;
@@ -92,13 +98,13 @@ export class AlbumCollectionComponent implements OnInit {
       return false;
     } else {
       this.displayMessageNotFound = false;
-      this.displaySortButtons = true
+      this.displaySortButtons = true;
       this.actualPage = 1;
       return true;
     }
   }
 
-  validateEnoughElementsToPaginate(totalItems:number) {
+  validateEnoughElementsToPaginate(totalItems: number) {
     if (totalItems > this.DEFAULT_ITEMS_PER_PAGE) {
       return true;
     } else {
@@ -106,18 +112,30 @@ export class AlbumCollectionComponent implements OnInit {
     }
   }
 
-  //set states
-  setStatesForWelcomePage(){
-    this.displayWelcomeMessage=true;
-    this.displayMessageNotFound=false;
+  setStatesForWelcomePage() {
+    this.displayWelcomeMessage = true;
+    this.displayMessageNotFound = false;
     this.albumCollection = [];
-    this.displaySortButtons=false;
-    this.enoughElementsToPaginate=false;
+    this.displaySortButtons = false;
+    this.enoughElementsToPaginate = false;
     this.resetPagination();
   }
 
-  resetPagination(){
-    this.displayButtonShowAll=true;
+  resetPagination() {
+    this.displayButtonShowAll = true;
     this.totalItemsPerPage = this.DEFAULT_ITEMS_PER_PAGE;
+  }
+
+  exeptionOption(error:any,artistName:string){
+    if (error.status === 403) {
+      this.getAllMediaFromArtist(artistName)
+    }
+    if (error.status === 0){
+      this.displayLoadingIcon = false;
+      this.displayMessageNotFound = true;
+      this.displaySortButtons = false;
+      this.enoughElementsToPaginate = false;
+      this.resetPagination();
+    }
   }
 }
